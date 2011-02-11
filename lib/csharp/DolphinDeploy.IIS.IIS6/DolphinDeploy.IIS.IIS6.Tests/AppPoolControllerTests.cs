@@ -27,7 +27,21 @@ namespace DolphinDeploy.IIS.IIS6.Tests
             Assert.DoesNotThrow(poolControllerController.Delete);
         }
 
-        private AppPoolController CreateController()
+		[Fact]
+		public void Can_Stop_AppPool() {
+			AppPoolController poolController = CreateController();
+
+			Assert.DoesNotThrow(poolController.Stop);
+		}
+
+		[Fact]
+		public void Can_Start_AppPool() {
+			AppPoolController poolController = CreateController();
+
+			Assert.DoesNotThrow(poolController.Start);
+		}
+
+    	private AppPoolController CreateController()
         {
             var appController = new AppPoolController();
             appController.Server = "localhost";
